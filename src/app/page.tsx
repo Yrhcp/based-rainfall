@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Clock } from 'lucide-react';
+import { Header } from '@/components/Header';
 
 // Топ-20 монет по капе (логотипы с CoinGecko CDN)
 const TOKENS = [
@@ -69,10 +70,11 @@ export default function Game() {
 
   return (
     <main className="relative min-h-screen bg-[#0052FF] overflow-hidden flex flex-col items-center justify-center text-white p-4 font-sans select-none">
+      <Header />
       
       {/* Шапка с данными */}
       {gameState === 'playing' && (
-        <div className="absolute top-10 left-0 right-0 flex justify-between px-8 z-50">
+        <div className="absolute top-24 left-0 right-0 flex justify-between px-8 z-50">
           <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-2xl">
             <Trophy size={20} />
             <span className="text-xl font-bold">{score}</span>
@@ -103,13 +105,13 @@ export default function Game() {
         {gameState === 'playing' && fallingTokens.map((token) => (
           <motion.div
             key={token.id}
-            initial={{ y: -100, x: `${token.x}%`, opacity: 1 }}
+            initial={{ y: -100, opacity: 1 }}
             animate={{ y: '110vh' }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ duration: 1.8, ease: "linear" }} // Скорость падения
             onPointerDown={() => catchToken(token.id, token.type.points)}
             className="absolute cursor-pointer touch-none"
-            style={{ width: '60px', height: '60px' }}
+            style={{ width: '60px', height: '60px', left: `${token.x}%` }}
           >
             <img src={token.type.img} alt={token.type.name} className="w-full h-full object-contain pointer-events-none drop-shadow-lg" />
           </motion.div>
