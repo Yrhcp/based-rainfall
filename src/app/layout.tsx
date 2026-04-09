@@ -16,6 +16,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Based Rainfall",
   description: "Catch the top crypto! Powered by Base OnchainKit.",
+  other: {
+    "base:app_id": "69d7c407adb751d63e3ce779",
+  },
 };
 
 export default function RootLayout({
