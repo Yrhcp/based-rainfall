@@ -1,9 +1,9 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Clock } from 'lucide-react';
-import { Header } from '@/components/Header';
 
 // Топ-20 монет по капе (логотипы с CoinGecko CDN)
 const TOKENS = [
@@ -70,7 +70,6 @@ export default function Game() {
 
   return (
     <main className="relative min-h-screen bg-[#0052FF] overflow-hidden flex flex-col items-center justify-center text-white p-4 font-sans select-none">
-      <Header />
       
       {/* Шапка с данными */}
       {gameState === 'playing' && (
